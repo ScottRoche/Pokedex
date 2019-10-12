@@ -4,16 +4,20 @@ from bs4 import BeautifulSoup as soup
 
 class WebScraper:
 
-    def __init__(self, starting_url):
-        self.starting_url = starting_url
+    def __init__(self, page_url):
+        self.page_url = 'https://www.pokemon.com' + page_url
 
+    ## Changes the page url
+    def change_page(self, page_url):
+        self.page_url = 'https://www.pokemon.com' + page_url
+
+    ## Returns the HTML code
     def web_scrape(self, name, attrs):
-        uClient = urlopen(self.starting_url)
+        uClient = urlopen(self.page_url)
         page_html = uClient.read()
         uClient.close()
-        
-        ## HTML parsing.
+
+        ## Parse HTML
         page_soup = soup(page_html, "html.parser")
-        results = page_soup.find(name, attrs)
-        pokemon = "".join([line.strip() for line in results.text.split("\n")])
-        return {'name' : pokemon}
+        result = page_soup.find(name, attrs)
+        return result
