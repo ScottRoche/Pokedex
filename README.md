@@ -1,2 +1,2 @@
 # Pokedex
-Get information about every pokemon on the pokemon website, by ID number
+Get information about every pokemon on the pokemon website, by ID number.
